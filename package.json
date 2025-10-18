@@ -16,9 +16,12 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
     "react": "19.1.1",
+    "react-dom": "^19.2.0",
     "react-native": "0.82.0",
     "react-native-config": "^1.5.9",
     "react-native-safe-area-context": "^5.5.2",
+    "react-native-web": "^0.21.2",
+    "react-scripts": "^5.0.1",
     "reactotron-core-client": "^2.9.9",
     "reactotron-react-native": "^5.1.18",
     "reactotron-redux": "^3.2.1",

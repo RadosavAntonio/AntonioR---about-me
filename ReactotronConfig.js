@@ -1,14 +1,16 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
-import config from 'react-native-config';
-import Reactotron from 'reactotron-react-native';
-import { reactotronRedux } from 'reactotron-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Platform } from 'react-native'
+import config from 'react-native-config'
+import Reactotron from 'reactotron-react-native'
+import { reactotronRedux } from 'reactotron-redux'
 
-const CONFIG_TYPE = config.APP_CONFIG ?? 'NONE';
+const CONFIG_TYPE = config.APP_CONFIG ?? 'NONE'
 
 const reactotron = Reactotron.setAsyncStorageHandler(AsyncStorage)
   .configure({
-    name: `Shout ${CONFIG_TYPE} ${Platform.OS === 'ios' ? 'iOS' : 'Android'}`,
+    name: `AntonioR ${CONFIG_TYPE} ${
+      Platform.OS === 'ios' ? 'iOS' : 'Android'
+    }`,
   })
   .setAsyncStorageHandler(AsyncStorage)
   .useReactNative({
@@ -22,12 +24,12 @@ const reactotron = Reactotron.setAsyncStorageHandler(AsyncStorage)
     overlay: false, // just turning off overlay
   })
   .use(reactotronRedux())
-  .connect();
+  .connect()
 
-Reactotron.clear();
+Reactotron.clear()
 
-export default reactotron;
+export default reactotron
 
 export const connect = () => {
-  Reactotron.connect();
-};
+  Reactotron.connect()
+}
