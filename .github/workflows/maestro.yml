@@ -1,0 +1,30 @@
+name: Maestro
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_flows:
+        description: "Run Maestro flows"
+        required: false
+        default: "false"
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  maestro:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Maestro via Homebrew
+        run: |
+          brew tap mobile-dev-inc/tap
+          brew install mobile-dev-inc/tap/maestro
+
+      - name: Maestro doctor
+        run: maestro doctor
+
+      - name: Run Maestro flows (optional)
+        if: ${{ github.event.inputs.run_flows == 'true' }}
+        run: maestro test ./maestro/flows

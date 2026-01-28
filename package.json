@@ -31,7 +31,12 @@
     "gradleSync": "clear && cd android && ./gradlew build -x lint && cd ..",
     "logAndroid": "npx react-native log-android",
     "-----": "----------------------- ⭐️ ANDROID / Release ⭐️ ---------------------------",
-    "aBuild": "clear && cd android && ./gradlew bundleRelease -x lint"
+    "aBuild": "clear && cd android && ./gradlew bundleRelease -x lint",
+    "maestro:install": "brew tap mobile-dev-inc/tap && brew install mobile-dev-inc/tap/maestro",
+    "maestro:doctor": "maestro doctor",
+    "maestro:test:all": "maestro test ./maestro/flows",
+    "maestro:test:android": "maestro test ./maestro/flows/example.android.yaml",
+    "maestro:test:ios": "maestro test -p ios ./maestro/appOpen ./maestro/homeScreen"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
