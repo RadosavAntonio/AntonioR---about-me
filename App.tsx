@@ -1,16 +1,33 @@
-import React from 'react'
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native'
+import React, { useRef } from 'react'
+import {
+  Button,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { AppBottomSheet, AppBottomSheetHandle } from './src/app/appBottomSheet'
 
 export const App = (): React.ReactElement => {
   const isDarkMode = useColorScheme() === 'dark'
+  const bottomSheetRef = useRef<AppBottomSheetHandle | null>(null)
+
+  const openSheet = async () => {
+    await bottomSheetRef.current?.present()
+  }
 
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={styles.container}>
         <Text style={styles.text}>Coming soon 😎</Text>
+        <View style={{ marginTop: 20 }}>
+          <Button title="Open sheet" onPress={openSheet} />
+        </View>
       </View>
+      <AppBottomSheet ref={bottomSheetRef} />
     </SafeAreaProvider>
   )
 }

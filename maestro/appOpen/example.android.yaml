@@ -1,0 +1,8 @@
+appId: com.antonioR.aboutMe
+name: AntonioR
+tags:
+  - android
+
+---
+- launchApp
+- assertVisible: "Coming soon 😎"
