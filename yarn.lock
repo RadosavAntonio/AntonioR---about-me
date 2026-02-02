@@ -9791,6 +9791,11 @@ react-native-safe-area-context@^5.5.2:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.6.2.tgz#283e006f5b434fb247fcb4be0971ad7473d5c560"
   integrity sha512-4XGqMNj5qjUTYywJqpdWZ9IG8jgkS3h06sfVjfw5yZQZfWnRFXczi0GnYyFyCc2EBps/qFmoCH8fez//WumdVg==
 
+react-native-stallion@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-stallion/-/react-native-stallion-2.3.2.tgz#23b6e21f3191a5e8f1090df35a90abe7987aa354"
+  integrity sha512-DSs9wAPqPuQkLWsoh38923m0wDhaugdX1nqTp9OpTeibtSb9sKgAkgZk/NSq4ogIInfjdMMvAsyKzJKMgmmbeg==
+
 react-native-web@^0.21.2:
   version "0.21.2"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.21.2.tgz#0f6983dfea600d9cc1c66fda87ff9ca585eaa647"

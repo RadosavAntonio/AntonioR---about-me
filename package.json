@@ -47,6 +47,7 @@
     "react-native": "0.83.1",
     "react-native-config": "^1.5.9",
     "react-native-safe-area-context": "^5.5.2",
+    "react-native-stallion": "^2.3.2",
     "react-native-web": "^0.21.2",
     "react-scripts": "^5.0.1",
     "reactotron-core-client": "^2.9.9",

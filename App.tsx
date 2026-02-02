@@ -8,9 +8,10 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { withStallion } from 'react-native-stallion'
 import { AppBottomSheet, AppBottomSheetHandle } from './src/app/appBottomSheet'
 
-export const App = (): React.ReactElement => {
+const App = (): React.ReactElement => {
   const isDarkMode = useColorScheme() === 'dark'
   const bottomSheetRef = useRef<AppBottomSheetHandle | null>(null)
 
@@ -46,3 +47,5 @@ const styles = StyleSheet.create({
     color: '#333',
   },
 })
+
+export default withStallion(App)
