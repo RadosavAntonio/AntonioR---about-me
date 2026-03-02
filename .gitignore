@@ -77,3 +77,9 @@ yarn-error.log
 # ProjectRelated
 .env
 .env.*
+
+# Firebase
+.firebase/
+
+# Claude Code
+.claude/
