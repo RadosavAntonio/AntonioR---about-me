@@ -30,5 +30,22 @@ target 'antonioR' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Generate env.xcconfig from .env via react-native-config
+    root = Pod::Config.instance.installation_root.parent
+    xcconfig_path = root.join('ios', 'env.xcconfig')
+    system("ruby", root.join('node_modules', 'react-native-config', 'ios', 'ReactNativeConfig', 'BuildXCConfig.rb').to_s, root.to_s, xcconfig_path.to_s)
+
+    # Include env.xcconfig in Pods target support xcconfigs (used by app target)
+    pods_dir = Pod::Config.instance.installation_root.join('Pods')
+    ['debug', 'release'].each do |mode|
+      xcconfig_file = pods_dir.join('Target Support Files', 'Pods-antonioR', "Pods-antonioR.#{mode}.xcconfig")
+      next unless xcconfig_file.exist?
+      contents = xcconfig_file.read
+      include_line = "#include \"#{xcconfig_path}\""
+      unless contents.include?(include_line)
+        File.open(xcconfig_file, 'a') { |f| f.puts("\n#{include_line}") }
+      end
+    end
   end
 end

@@ -87,6 +87,8 @@ android {
         versionName "1.0"
         buildConfigField "String", "APP_CONFIG", "\"${project.env.get("APP_CONFIG")}\""
         resValue "string", "app_config", project.env.get("APP_CONFIG")
+        resValue "string", "StallionProjectId", project.env.get("STALLION_PROJECT_ID")
+        resValue "string", "StallionAppToken", project.env.get("STALLION_APP_TOKEN")
     }
     signingConfigs {
         debug {

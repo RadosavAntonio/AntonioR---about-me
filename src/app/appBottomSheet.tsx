@@ -1,6 +1,9 @@
 import { TrueSheet } from '@lodev09/react-native-true-sheet'
 import React, { forwardRef, memo, useImperativeHandle, useRef } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
+import { lightColors } from '../utils/style/colors'
+import { SPACE } from '../utils/style/constants'
+import { getSize } from '../utils/style/globalUtilityFunctionsAndConstants'
 
 export interface AppBottomSheetHandle {
   present: () => Promise<void> | void
@@ -44,10 +47,10 @@ export const AppBottomSheet = memo(Forwarded)
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: SPACE[24],
     alignItems: 'center',
   },
-  title: { fontSize: 18, fontWeight: '600', marginBottom: 8 },
-  text: { fontSize: 14, color: '#333', marginBottom: 12 },
-  button: { marginTop: 8, width: '100%' },
+  title: { fontSize: getSize(18), fontWeight: '600', marginBottom: SPACE[8] },
+  text: { fontSize: getSize(14), color: lightColors.textPrimary, marginBottom: SPACE[12] },
+  button: { marginTop: SPACE[8], width: '100%' },
 })
