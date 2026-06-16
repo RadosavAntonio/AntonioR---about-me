@@ -1,5 +1,7 @@
 import { memo } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { darkColors } from '../utils/style/colors'
+import { BORDER_RADIUS, centered } from '../utils/style/constants'
 
 const Button3dInit = (): React.ReactNode => {
   return (
@@ -25,12 +27,11 @@ const styles = StyleSheet.create({
   container: {
     width: 300,
     height: 300,
-    borderRadius: 45,
-    backgroundColor: '#1F1F1F',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderRadius: BORDER_RADIUS[40],
+    backgroundColor: darkColors.background,
+    ...centered,
 
-    shadowColor: '#000',
+    shadowColor: darkColors.shadowDark,
     shadowOffset: { width: 10, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 14,
@@ -47,9 +48,9 @@ const styles = StyleSheet.create({
     width: SIZE,
     height: SIZE,
     borderRadius: SIZE / 2,
-    backgroundColor: '#2B2B2B',
+    backgroundColor: darkColors.surface,
 
-    shadowColor: '#000',
+    shadowColor: darkColors.shadowDark,
     shadowOffset: { width: 6, height: 6 },
     shadowOpacity: 0.55,
     shadowRadius: 8,
@@ -60,11 +61,10 @@ const styles = StyleSheet.create({
   innerShadow: {
     flex: 1,
     borderRadius: SIZE / 2,
-    backgroundColor: '#2B2B2B',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: darkColors.surface,
+    ...centered,
 
-    shadowColor: '#FFF',
+    shadowColor: darkColors.textPrimary,
     shadowOffset: { width: -5, height: -5 },
     shadowOpacity: 0.12,
     shadowRadius: 6,

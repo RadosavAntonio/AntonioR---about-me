@@ -77,9 +77,11 @@ yarn-error.log
 # ProjectRelated
 .env
 .env.*
+ios/env.xcconfig
 
 # Firebase
 .firebase/
+firebase-debug.log
 
 # Claude Code
 .claude/

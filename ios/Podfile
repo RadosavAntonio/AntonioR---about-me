@@ -30,5 +30,35 @@ target 'antonioR' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Patch fmt: 11.0.2 (pinned by RN 0.83) declares basic_format_string consteval,
+    # which Apple clang 21 (Xcode 26) rejects as non-constant. Widen the Apple-clang
+    # gate so FMT_USE_CONSTEVAL becomes 0 (runtime format checks, same as older clang).
+    fmt_base = Pod::Config.instance.installation_root.join('Pods', 'fmt', 'include', 'fmt', 'base.h')
+    if fmt_base.exist?
+      fmt_contents = fmt_base.read
+      fmt_patched = fmt_contents.gsub('__apple_build_version__ < 14000029L', '__apple_build_version__ < 9999999999L')
+      if fmt_patched != fmt_contents
+        fmt_base.write(fmt_patched)
+        Pod::UI.puts "Patched fmt base.h: disabled consteval for Apple clang 21 (Xcode 26)".yellow
+      end
+    end
+
+    # Generate env.xcconfig from .env via react-native-config
+    root = Pod::Config.instance.installation_root.parent
+    xcconfig_path = root.join('ios', 'env.xcconfig')
+    system("ruby", root.join('node_modules', 'react-native-config', 'ios', 'ReactNativeConfig', 'BuildXCConfig.rb').to_s, root.to_s, xcconfig_path.to_s)
+
+    # Include env.xcconfig in Pods target support xcconfigs (used by app target)
+    pods_dir = Pod::Config.instance.installation_root.join('Pods')
+    ['debug', 'release'].each do |mode|
+      xcconfig_file = pods_dir.join('Target Support Files', 'Pods-antonioR', "Pods-antonioR.#{mode}.xcconfig")
+      next unless xcconfig_file.exist?
+      contents = xcconfig_file.read
+      include_line = "#include \"#{xcconfig_path}\""
+      unless contents.include?(include_line)
+        File.open(xcconfig_file, 'a') { |f| f.puts("\n#{include_line}") }
+      end
+    end
   end
 end
