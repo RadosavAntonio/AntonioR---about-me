@@ -1,7 +1,6 @@
 import React from 'react'
 import { StatusBar, useColorScheme } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { withStallion } from 'react-native-stallion'
 import { Main } from './src/navigation/main'
 
 const AppInit = (): React.ReactElement => {
@@ -15,4 +14,4 @@ const AppInit = (): React.ReactElement => {
   )
 }
 
-export const App = withStallion(AppInit)
+export const App = AppInit

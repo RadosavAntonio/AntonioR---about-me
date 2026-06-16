@@ -1,0 +1,12 @@
+{
+  "name": "@antonior/core",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "peerDependencies": {
+    "@lodev09/react-native-true-sheet": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

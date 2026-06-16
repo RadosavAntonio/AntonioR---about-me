@@ -1,8 +1,6 @@
+import { centered, getSize, lightColors, SPACE } from '@antonior/core'
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { lightColors } from '../../../utils/style/colors'
-import { centered, SPACE } from '../../../utils/style/constants'
-import { getSize } from '../../../utils/style/globalUtilityFunctionsAndConstants'
 
 const ProfileInit = (): React.ReactElement => {
   return (
@@ -14,6 +12,7 @@ const ProfileInit = (): React.ReactElement => {
 }
 
 export const Profile = memo(ProfileInit)
+export default Profile
 
 const styles = StyleSheet.create({
   container: {

@@ -1,8 +1,6 @@
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { lightColors } from '../../../utils/style/colors'
-import { centered, SPACE } from '../../../utils/style/constants'
-import { getSize } from '../../../utils/style/globalUtilityFunctionsAndConstants'
+import { centered, getSize, lightColors, SPACE } from '@antonior/core'
 
 const ExampleInit = (): React.ReactElement => {
   return (
@@ -14,6 +12,7 @@ const ExampleInit = (): React.ReactElement => {
 }
 
 export const Example = memo(ExampleInit)
+export default Example
 
 const styles = StyleSheet.create({
   container: {

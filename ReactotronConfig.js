@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Platform } from 'react-native'
 import config from 'react-native-config'
 import Reactotron from 'reactotron-react-native'
-import { reactotronRedux } from 'reactotron-redux'
 
 const CONFIG_TYPE = config.APP_CONFIG ?? 'NONE'
 
@@ -23,7 +22,6 @@ const reactotron = Reactotron.setAsyncStorageHandler(AsyncStorage)
     errors: { veto: stackFrame => false }, // or turn it off with false
     overlay: false, // just turning off overlay
   })
-  .use(reactotronRedux())
   .connect()
 
 Reactotron.clear()

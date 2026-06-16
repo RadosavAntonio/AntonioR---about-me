@@ -2,7 +2,6 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
-import react_native_stallion
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,7 +42,7 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
 #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
 #else
-    StallionModule.getBundleURL()
+    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
 #endif
   }
 }

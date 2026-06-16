@@ -1,4 +1,4 @@
-import { getSize } from './globalUtilityFunctionsAndConstants'
+import { getSize } from './utils'
 
 export const SPACE = {
   64: getSize(64),

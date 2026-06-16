@@ -1,4 +1,3 @@
-import { isString } from 'lodash'
 import { Dimensions, Platform } from 'react-native'
 
 export const isIos = Platform.OS === 'ios'
@@ -20,7 +19,7 @@ const heightScaleFactor = screenHeight / baseHeight
 const scaleFactor = Math.min(widthScaleFactor, heightScaleFactor)
 
 export const getSize = (size: number | string): number => {
-  if (isString(size)) {
+  if (typeof size === 'string') {
     const parsedSize = parseFloat(size)
     return isNaN(parsedSize) ? 0 : Math.round(parsedSize * scaleFactor)
   }
