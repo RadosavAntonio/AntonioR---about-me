@@ -1,0 +1,61 @@
+{
+  "hosting": [
+    {
+      "target": "home",
+      "public": "modules/home/build/home",
+      "ignore": ["firebase.json", "**/.*"],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+          ]
+        },
+        {
+          "source": "**/*.chunk.bundle",
+          "headers": [
+            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "profile",
+      "public": "modules/profile/build/profile",
+      "ignore": ["firebase.json", "**/.*"],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+          ]
+        },
+        {
+          "source": "**/*.chunk.bundle",
+          "headers": [
+            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "example",
+      "public": "modules/example/build/example",
+      "ignore": ["firebase.json", "**/.*"],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+          ]
+        },
+        {
+          "source": "**/*.chunk.bundle",
+          "headers": [
+            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          ]
+        }
+      ]
+    }
+  ]
+}

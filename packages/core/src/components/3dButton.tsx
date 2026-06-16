@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { darkColors } from '../utils/style/colors'
-import { BORDER_RADIUS, centered } from '../utils/style/constants'
+import { darkColors } from '../colors'
+import { BORDER_RADIUS, centered } from '../constants'
 
 const Button3dInit = (): React.ReactNode => {
   return (

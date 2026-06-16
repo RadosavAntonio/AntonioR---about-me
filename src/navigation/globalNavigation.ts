@@ -26,7 +26,5 @@ export const globalNavigation = () => {
     goToHome: () => navigateToTab(TabRoute.HOME),
     goToProfile: () => navigateToTab(TabRoute.PROFILE),
     goToExample: () => navigateToTab(TabRoute.EXAMPLE),
-    goToChatList: () => navigate(Screens.CHAT_LIST),
-    goToChat: (id: string) => navigate(Screens.CHAT, { id }),
   }
 }

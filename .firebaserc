@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "antonior-aboutme"
+  },
+  "targets": {
+    "antonior-aboutme": {
+      "hosting": {
+        "home": ["antonior-home"],
+        "profile": ["antonior-profile"],
+        "example": ["antonior-example"]
+      }
+    }
+  }
+}

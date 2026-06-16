@@ -1,18 +1,17 @@
+import { centered, getSize, lightColors, SPACE } from '@antonior/core'
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { lightColors } from '../../../utils/style/colors'
-import { centered, SPACE } from '../../../utils/style/constants'
-import { getSize } from '../../../utils/style/globalUtilityFunctionsAndConstants'
 
 const HomeInit = (): React.ReactElement => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> AntonioR v1 🚀</Text>
+      <Text style={styles.text}> AntonioR v2 🚀 (OTA update!)</Text>
     </View>
   )
 }
 
 export const Home = memo(HomeInit)
+export default Home
 
 const styles = StyleSheet.create({
   container: {

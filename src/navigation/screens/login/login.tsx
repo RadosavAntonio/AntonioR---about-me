@@ -1,9 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { memo } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { lightColors } from '../../../utils/style/colors'
-import { centered, SPACE } from '../../../utils/style/constants'
-import { getSize } from '../../../utils/style/globalUtilityFunctionsAndConstants'
+import { centered, getSize, lightColors, SPACE } from '@antonior/core'
 
 const LoginInit = (): React.ReactElement => {
   const navigation = useNavigation()

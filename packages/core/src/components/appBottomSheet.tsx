@@ -1,9 +1,9 @@
 import { TrueSheet } from '@lodev09/react-native-true-sheet'
 import React, { forwardRef, memo, useImperativeHandle, useRef } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { lightColors } from '../utils/style/colors'
-import { SPACE } from '../utils/style/constants'
-import { getSize } from '../utils/style/globalUtilityFunctionsAndConstants'
+import { lightColors } from '../colors'
+import { SPACE } from '../constants'
+import { getSize } from '../utils'
 
 export interface AppBottomSheetHandle {
   present: () => Promise<void> | void

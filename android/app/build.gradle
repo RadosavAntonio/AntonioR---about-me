@@ -8,6 +8,9 @@ apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.grad
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 react {
+    // Use Re.Pack (not Metro) to build the JS bundle in release builds.
+    bundleCommand = "webpack-bundle"
+
     /* Folders */
     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
     // root = file("../../")
@@ -87,8 +90,6 @@ android {
         versionName "1.0"
         buildConfigField "String", "APP_CONFIG", "\"${project.env.get("APP_CONFIG")}\""
         resValue "string", "app_config", project.env.get("APP_CONFIG")
-        resValue "string", "StallionProjectId", project.env.get("STALLION_PROJECT_ID")
-        resValue "string", "StallionAppToken", project.env.get("STALLION_APP_TOKEN")
     }
     signingConfigs {
         debug {

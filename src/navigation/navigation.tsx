@@ -2,11 +2,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React, { memo } from 'react'
 
-import { lightColors } from '../utils/style/colors'
+import { lightColors } from '@antonior/core'
 import { Login } from './screens/login/login'
-import { Example } from './screens/tabs/example'
-import { Home } from './screens/tabs/home'
-import { Profile } from './screens/tabs/profile'
+import { RemoteScreen } from '../mf/RemoteScreen'
+
+// Tab screens are Module Federation remotes, loaded at runtime from their own bundles.
+const HomeScreen = React.lazy(() => import('home/HomeScreen'))
+const ProfileScreen = React.lazy(() => import('profile/ProfileScreen'))
+const ExampleScreen = React.lazy(() => import('example/ExampleScreen'))
 
 const RootStack = createNativeStackNavigator()
 const HomeStack = createNativeStackNavigator()
@@ -16,19 +19,25 @@ const Tab = createBottomTabNavigator()
 
 const HomeStackScreen = memo(() => (
   <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-    <HomeStack.Screen name="HomeScreen" component={Home} />
+    <HomeStack.Screen name="HomeScreen">
+      {() => <RemoteScreen name="Home" component={HomeScreen} />}
+    </HomeStack.Screen>
   </HomeStack.Navigator>
 ))
 
 const ExampleStackScreen = memo(() => (
   <ExampleStack.Navigator screenOptions={{ headerShown: false }}>
-    <ExampleStack.Screen name="ExampleScreen" component={Example} />
+    <ExampleStack.Screen name="ExampleScreen">
+      {() => <RemoteScreen name="Example" component={ExampleScreen} />}
+    </ExampleStack.Screen>
   </ExampleStack.Navigator>
 ))
 
 const ProfileStackScreen = memo(() => (
   <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
-    <ProfileStack.Screen name="ProfileScreen" component={Profile} />
+    <ProfileStack.Screen name="ProfileScreen">
+      {() => <RemoteScreen name="Profile" component={ProfileScreen} />}
+    </ProfileStack.Screen>
   </ProfileStack.Navigator>
 ))
 
