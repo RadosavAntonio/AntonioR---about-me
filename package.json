@@ -9,7 +9,7 @@
     "web": "webpack serve --mode development --config ./web/webpack.config.js",
     "web:build": "webpack --mode production --config ./web/webpack.config.js",
     "lint": "eslint .",
-    "start": "clear && react-native start",
+    "start": "clear && react-native start --reset-cache",
     "test": "jest",
     "clean": "npx react-native clean && clear",
     "bundle": "bundle install",

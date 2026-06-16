@@ -3,21 +3,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React, { memo } from 'react'
 
 import { lightColors } from '../utils/style/colors'
-import { Chat } from './screens/chat/chat'
-import { ChatList } from './screens/chat/chatList'
 import { Login } from './screens/login/login'
+import { Example } from './screens/tabs/example'
 import { Home } from './screens/tabs/home'
 import { Profile } from './screens/tabs/profile'
 
 const RootStack = createNativeStackNavigator()
 const HomeStack = createNativeStackNavigator()
 const ProfileStack = createNativeStackNavigator()
+const ExampleStack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
 const HomeStackScreen = memo(() => (
   <HomeStack.Navigator screenOptions={{ headerShown: false }}>
     <HomeStack.Screen name="HomeScreen" component={Home} />
   </HomeStack.Navigator>
+))
+
+const ExampleStackScreen = memo(() => (
+  <ExampleStack.Navigator screenOptions={{ headerShown: false }}>
+    <ExampleStack.Screen name="ExampleScreen" component={Example} />
+  </ExampleStack.Navigator>
 ))
 
 const ProfileStackScreen = memo(() => (
@@ -28,11 +34,19 @@ const ProfileStackScreen = memo(() => (
 
 const TabNavigator = memo(() => (
   <Tab.Navigator
+    initialRouteName="Home"
     screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: lightColors.primary,
       tabBarInactiveTintColor: lightColors.textTertiary,
     }}>
+    <Tab.Screen
+      name="Example"
+      component={ExampleStackScreen}
+      options={{
+        tabBarLabel: 'Example',
+      }}
+    />
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
@@ -57,8 +71,6 @@ const RootNavigationInit = (): React.ReactElement => {
       screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="Login" component={Login} />
       <RootStack.Screen name="Tabs" component={TabNavigator} />
-      <RootStack.Screen name="ChatList" component={ChatList} />
-      <RootStack.Screen name="Chat" component={Chat} />
     </RootStack.Navigator>
   )
 }
