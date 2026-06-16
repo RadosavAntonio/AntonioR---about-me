@@ -1,11 +1,17 @@
-import { centered, getSize, lightColors, SPACE } from '@antonior/core'
+import { Button3d, centered, getSize, SPACE, useTheme } from '@antonior/core'
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 const HomeInit = (): React.ReactElement => {
+  const { colors } = useTheme()
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}> AntonioR v2 🚀 (OTA update!)</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.text, { color: colors.textPrimary }]}>
+        {' '}
+        AntonioR v2 🚀 (OTA update!)
+      </Text>
+      <Button3d />
     </View>
   )
 }
@@ -16,7 +22,6 @@ export default Home
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: lightColors.background,
     ...centered,
     padding: SPACE[24],
   },
@@ -24,6 +29,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: getSize(18),
     marginVertical: SPACE[4],
-    color: lightColors.textPrimary,
   },
 })
