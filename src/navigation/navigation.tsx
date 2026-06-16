@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React, { memo } from 'react'
 
-import { lightColors } from '@antonior/core'
+import { useTheme } from '@antonior/core'
 import { Login } from './screens/login/login'
 import { RemoteScreen } from '../mf/RemoteScreen'
 
@@ -41,37 +41,41 @@ const ProfileStackScreen = memo(() => (
   </ProfileStack.Navigator>
 ))
 
-const TabNavigator = memo(() => (
-  <Tab.Navigator
-    initialRouteName="Home"
-    screenOptions={{
-      headerShown: false,
-      tabBarActiveTintColor: lightColors.primary,
-      tabBarInactiveTintColor: lightColors.textTertiary,
-    }}>
-    <Tab.Screen
-      name="Example"
-      component={ExampleStackScreen}
-      options={{
-        tabBarLabel: 'Example',
-      }}
-    />
-    <Tab.Screen
-      name="Home"
-      component={HomeStackScreen}
-      options={{
-        tabBarLabel: 'Home',
-      }}
-    />
-    <Tab.Screen
-      name="Profile"
-      component={ProfileStackScreen}
-      options={{
-        tabBarLabel: 'Profile',
-      }}
-    />
-  </Tab.Navigator>
-))
+const TabNavigator = memo(() => {
+  const { colors } = useTheme()
+
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textTertiary,
+      }}>
+      <Tab.Screen
+        name="Example"
+        component={ExampleStackScreen}
+        options={{
+          tabBarLabel: 'Example',
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={HomeStackScreen}
+        options={{
+          tabBarLabel: 'Home',
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStackScreen}
+        options={{
+          tabBarLabel: 'Profile',
+        }}
+      />
+    </Tab.Navigator>
+  )
+})
 
 const RootNavigationInit = (): React.ReactElement => {
   return (

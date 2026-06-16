@@ -1,6 +1,6 @@
 import React, { memo, Suspense } from 'react'
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
-import { centered, getSize, lightColors, SPACE } from '@antonior/core'
+import { centered, getSize, SPACE, useTheme } from '@antonior/core'
 
 interface BoundaryProps {
   name: string
@@ -28,15 +28,25 @@ class RemoteErrorBoundary extends React.Component<BoundaryProps, BoundaryState> 
 
   render() {
     if (this.state.hasError) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Couldn't load {this.props.name}</Text>
-          <Text style={styles.subtitle}>This module is unavailable right now.</Text>
-        </View>
-      )
+      return <ErrorFallback name={this.props.name} />
     }
     return this.props.children
   }
+}
+
+const ErrorFallback = ({ name }: { name: string }) => {
+  const { colors } = useTheme()
+
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.textPrimary }]}>
+        Couldn't load {name}
+      </Text>
+      <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
+        This module is unavailable right now.
+      </Text>
+    </View>
+  )
 }
 
 const Loading = () => (
@@ -71,18 +81,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: lightColors.background,
     ...centered,
     padding: SPACE[24],
   },
   title: {
     fontSize: getSize(18),
     fontWeight: 'bold',
-    color: lightColors.textPrimary,
     marginBottom: SPACE[8],
   },
   subtitle: {
     fontSize: getSize(14),
-    color: lightColors.textSecondary,
   },
 })

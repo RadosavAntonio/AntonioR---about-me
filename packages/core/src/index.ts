@@ -1,4 +1,5 @@
 export * from './colors'
+export * from './theme'
 export * from './constants'
 export * from './utils'
 export * from './components/appBottomSheet'

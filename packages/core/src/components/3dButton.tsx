@@ -1,76 +1,82 @@
 import { memo } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 import { darkColors } from '../colors'
-import { BORDER_RADIUS, centered } from '../constants'
+import { centered } from '../constants'
 
+const SIZE = 58
+
+/**
+ * Neumorphic 3D button. Raised state stacks a dark drop shadow (bottom-right)
+ * against a light lift highlight (top-left) plus a thin inset top rim so the
+ * disc reads as curved and lifted off the surface. Pressing flips both outer
+ * shadows to inset so it looks pushed in.
+ */
 const Button3dInit = (): React.ReactNode => {
   return (
-    <View style={styles.container}>
-      <Pressable
-        onPress={() => {}}
-        style={({ pressed }) => [styles.wrap, pressed && styles.pressed]}>
-        <View style={styles.outerShadow}>
-          <View style={styles.innerShadow}>
-            <Text>A</Text>
-          </View>
-        </View>
-      </Pressable>
-    </View>
+    <Pressable
+      onPress={() => {}}
+      style={({ pressed }) => [
+        styles.button,
+        pressed ? styles.pressed : styles.raised,
+      ]}>
+      <Text style={styles.label}>A</Text>
+    </Pressable>
   )
 }
 
 export const Button3d = memo(Button3dInit)
 
-const SIZE = 58
-
 const styles = StyleSheet.create({
-  container: {
-    width: 300,
-    height: 300,
-    borderRadius: BORDER_RADIUS[40],
-    backgroundColor: darkColors.background,
-    ...centered,
-
-    shadowColor: darkColors.shadowDark,
-    shadowOffset: { width: 10, height: 10 },
-    shadowOpacity: 0.5,
-    shadowRadius: 14,
-
-    elevation: 12,
-  },
-
-  wrap: {
-    width: SIZE,
-    height: SIZE,
-  },
-
-  outerShadow: {
+  button: {
     width: SIZE,
     height: SIZE,
     borderRadius: SIZE / 2,
     backgroundColor: darkColors.surface,
-
-    shadowColor: darkColors.shadowDark,
-    shadowOffset: { width: 6, height: 6 },
-    shadowOpacity: 0.55,
-    shadowRadius: 8,
-
-    elevation: 10,
-  },
-
-  innerShadow: {
-    flex: 1,
-    borderRadius: SIZE / 2,
-    backgroundColor: darkColors.surface,
     ...centered,
-
-    shadowColor: darkColors.textPrimary,
-    shadowOffset: { width: -5, height: -5 },
-    shadowOpacity: 0.12,
-    shadowRadius: 6,
   },
-
+  raised: {
+    boxShadow: [
+      { offsetX: 3, offsetY: 3, blurRadius: 6, color: darkColors.shadowMedium },
+      {
+        offsetX: -3,
+        offsetY: -3,
+        blurRadius: 6,
+        color: 'rgba(255, 255, 255, 0.05)',
+      },
+      {
+        offsetX: 0,
+        offsetY: 1,
+        blurRadius: 1,
+        color: 'rgba(255, 255, 255, 0.08)',
+        inset: true,
+      },
+    ],
+  },
   pressed: {
-    transform: [{ scale: 0.96 }],
+    boxShadow: [
+      {
+        offsetX: 5,
+        offsetY: 5,
+        blurRadius: 10,
+        color: darkColors.shadowDark,
+        inset: true,
+      },
+      {
+        offsetX: -4,
+        offsetY: -4,
+        blurRadius: 10,
+        color: 'rgba(255, 255, 255, 0.06)',
+        inset: true,
+      },
+    ],
+    transform: [{ scale: 0.97 }],
+  },
+  label: {
+    color: darkColors.textPrimary,
+    fontSize: 22,
+    fontWeight: '700',
+    textShadowColor: darkColors.shadowDark,
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
 })
