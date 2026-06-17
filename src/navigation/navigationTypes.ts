@@ -1,6 +1,7 @@
 export enum Screens {
   //Login
   LOGIN = 'Login',
+  OTP = 'Otp',
 
   //Home
   HOME_SCREEN = 'HomeScreen',
@@ -14,6 +15,7 @@ export enum Screens {
 
 export type RootStackParams = {
   [Screens.LOGIN]: undefined
+  [Screens.OTP]: undefined
   Tabs: undefined
 }
 

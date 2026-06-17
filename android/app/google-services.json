@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "247234622903",
+    "project_id": "antonior-aboutme",
+    "storage_bucket": "antonior-aboutme.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247234622903:android:63da452439650022a7a432",
+        "android_client_info": {
+          "package_name": "com.antonioR.aboutMe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247234622903-pqh6nq4ag4n21ql48tqt45j9piqglipd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.antonioR.aboutMe",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "247234622903-vavms1u6kff5ra854fh49gbua7vsjorm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqNuBvdAs6D8SIf6aLeCH7TaoRCUq9v6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247234622903-vavms1u6kff5ra854fh49gbua7vsjorm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "247234622903-6ca1pfmr35gh3rttaabprghp606ecj5u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.antonioR.aboutMe",
+                "app_store_id": "6747454992"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
