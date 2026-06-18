@@ -4,6 +4,7 @@ import React, { memo } from 'react'
 
 import { useTheme } from '@antonior/core'
 import { Login } from './screens/login/login'
+import { Otp } from './screens/login/otp'
 import { RemoteScreen } from '../mf/RemoteScreen'
 
 // Tab screens are Module Federation remotes, loaded at runtime from their own bundles.
@@ -83,6 +84,7 @@ const RootNavigationInit = (): React.ReactElement => {
       initialRouteName="Login"
       screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="Login" component={Login} />
+      <RootStack.Screen name="Otp" component={Otp} />
       <RootStack.Screen name="Tabs" component={TabNavigator} />
     </RootStack.Navigator>
   )

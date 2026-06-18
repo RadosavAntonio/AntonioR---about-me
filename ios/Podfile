@@ -8,11 +8,14 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-linkage = ENV['USE_FRAMEWORKS']
-if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
-end
+# @react-native-firebase: Firebase 12's Auth/Core are Swift. Their generated
+# <FirebaseAuth/FirebaseAuth-Swift.h> only resolves when the Firebase pods build as
+# frameworks, so RNFirebase pods must be static frameworks too and the whole project
+# links pods as static frameworks (overridable via USE_FRAMEWORKS).
+$RNFirebaseAsStaticFramework = true
+linkage = (ENV['USE_FRAMEWORKS'] || 'static').to_sym
+Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+use_frameworks! :linkage => linkage
 
 target 'antonioR' do
   config = use_native_modules!

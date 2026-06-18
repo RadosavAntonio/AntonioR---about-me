@@ -83,5 +83,9 @@ ios/env.xcconfig
 .firebase/
 firebase-debug.log
 
+# Secrets (APNs auth keys, service credentials, etc.)
+.secrets/
+*.p8
+
 # Claude Code
 .claude/
